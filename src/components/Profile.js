@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Profile = ({ setCurrentUser, currentUser, onSubmit, handleCredentialChange, handleSignout, refreshProfileData }) => {
-		const [currentOperation, setCurrentOperation] = useState("");
-		const navigate = useNavigate();
+const Profile = ({
+  setCurrentUser,
+  currentUser,
+  onSubmit,
+  handleCredentialChange,
+  handleSignout,
+  refreshProfileData,
+}) => {
+  const [currentOperation, setCurrentOperation] = useState("");
+  const navigate = useNavigate();
 
-		const closeForm = () => {
-			setCurrentOperation("");
-		};
+  const closeForm = () => {
+    setCurrentOperation("");
+  };
 
-		const handleModifyProfile = (user) => {
-			setCurrentOperation(user);
-		};
+  const handleModifyProfile = (user) => {
+    setCurrentOperation(user);
+  };
 
   const renderUserForm = () => {
     if (currentOperation === "edit") {
@@ -132,10 +139,16 @@ const Profile = ({ setCurrentUser, currentUser, onSubmit, handleCredentialChange
         />{" "}
         <br></br>
         <label for="username">
-          <b>Name: <span>{currentUser.Name}</span></b>
-        </label><br></br><br></br>
+          <b>
+            Name: <span>{currentUser.Name}</span>
+          </b>
+        </label>
+        <br></br>
+        <br></br>
         <label for="useremail">
-          <b>Email: <span>{currentUser.Email}</span></b>
+          <b>
+            Email: <span>{currentUser.Email}</span>
+          </b>
         </label>
         {renderUserForm()}
       </div>

@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Form, Button, Container, Navbar } from 'react-bootstrap';
+import { Form, Button, Container, Navbar } from "react-bootstrap";
 import "../style/style.scss";
 
 // Function for signing in, taking onSubmit and setting the current user as props
-const Signin = ({ onSubmit, setCurrentUser, handleSignin, checkIfSignedIn }) => {
+const Signin = ({
+  onSubmit,
+  setCurrentUser,
+  handleSignin,
+  checkIfSignedIn,
+}) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +53,11 @@ const Signin = ({ onSubmit, setCurrentUser, handleSignin, checkIfSignedIn }) => 
         <Button variant="primary" type="submit" className="mt-4 w-100">
           Sign In
         </Button>
-        <p className="text-left mt-4 text-primary"><Navbar.Brand as={Link} to="/Signup">Don't have an account?</Navbar.Brand></p>
+        <p className="text-left mt-4 text-primary">
+          <Navbar.Brand as={Link} to="/Signup">
+            Don't have an account?
+          </Navbar.Brand>
+        </p>
       </Form>
     </Container>
   );

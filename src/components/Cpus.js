@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
-import '../style/style.scss';
+import "../style/style.scss";
 
 // Function for rendering CPUs, which takes CPUs as a prop from API
 const RenderCpus = ({ cpus }) => {
@@ -17,7 +17,10 @@ const RenderCpus = ({ cpus }) => {
     <Container style={{ maxWidth: "1000px", margin: "0 auto" }}>
       <div className="wrapper">
         <h1 title="Warning">Computer CPUs</h1>
-        <p>This page showcases a comprehensive collection of CPU components. Feel free to scroll through and explore the available models.</p>
+        <p>
+          This page showcases a comprehensive collection of CPUs components. Feel
+          free to scroll through and explore the available models.
+        </p>
         <div className="scroll-downs">
           <div className="mousey">
             <div className="scroller"></div>
@@ -25,7 +28,14 @@ const RenderCpus = ({ cpus }) => {
         </div>
       </div>
       {loading ? (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "400px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px",
+          }}
+        >
           <Spinner animation="border" />
         </div>
       ) : (
@@ -35,7 +45,7 @@ const RenderCpus = ({ cpus }) => {
               <Card style={{ maxWidth: "345px", marginBottom: "20px" }}>
                 <Card.Img
                   variant="top"
-                  src={`/product_images/${cpuItem.Image}`}
+                  src={`${cpuItem.Image_Url}`}
                   style={{ height: "200px", objectFit: "cover" }}
                   alt={cpuItem.Name}
                 />

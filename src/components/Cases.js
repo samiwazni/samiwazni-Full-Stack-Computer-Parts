@@ -16,7 +16,10 @@ const RenderCases = ({ cases }) => {
     <Container style={{ maxWidth: "1000px", margin: "0 auto" }}>
       <div className="wrapper">
         <h1 title="Warning">Computer CASEs</h1>
-        <p>This page showcases a comprehensive collection of CASES components. Feel free to scroll through and explore the available models.</p>
+        <p>
+          This page showcases a comprehensive collection of CASES components.
+          Feel free to scroll through and explore the available models.
+        </p>
         <div className="scroll-downs">
           <div className="mousey">
             <div className="scroller"></div>
@@ -24,7 +27,14 @@ const RenderCases = ({ cases }) => {
         </div>
       </div>
       {loading ? (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "400px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px",
+          }}
+        >
           <Spinner animation="border" />
         </div>
       ) : (
@@ -32,7 +42,12 @@ const RenderCases = ({ cases }) => {
           {cases.map((caseItem) => (
             <Col xs={12} sm={6} md={3} key={caseItem.ID}>
               <Card style={{ maxWidth: "345px", marginBottom: "20px" }}>
-                <Card.Img variant="top" src={`/product_images/${caseItem.Image}`} style={{ height: "200px", objectFit: "cover" }} alt={caseItem.Name} />
+                <Card.Img
+                  variant="top"
+                  src={`${caseItem.Image_Url}`}
+                  style={{ height: "200px", objectFit: "cover" }}
+                  alt={caseItem.Name}
+                />
                 <Card.Body>
                   <Card.Title>Name: {caseItem.Name}</Card.Title>
                   <Card.Text>

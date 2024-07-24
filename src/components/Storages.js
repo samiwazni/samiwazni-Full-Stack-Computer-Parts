@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
-import '../style/style.scss';  // Ensure your CSS is properly imported
+import "../style/style.scss"; // Ensure your CSS is properly imported
 
 // Function for rendering storages, which takes storages as a prop from API
 const RenderStorages = ({ storages }) => {
@@ -17,7 +17,13 @@ const RenderStorages = ({ storages }) => {
     <Container style={{ maxWidth: "1000px", margin: "0 auto" }}>
       <div className="wrapper">
         <h1 title="Warning">Computer Storages</h1>
-        <h2 title="The new revolution started">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+        <h2 title="The new revolution started">
+        <p>
+          This page showcases a comprehensive collection of STORAGES
+          components. Feel free to scroll through and explore the available
+          models.
+        </p>
+        </h2>
         <div className="scroll-downs">
           <div className="mousey">
             <div className="scroller"></div>
@@ -25,7 +31,14 @@ const RenderStorages = ({ storages }) => {
         </div>
       </div>
       {loading ? (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "400px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px",
+          }}
+        >
           <Spinner animation="border" />
         </div>
       ) : (
@@ -35,7 +48,7 @@ const RenderStorages = ({ storages }) => {
               <Card style={{ maxWidth: "345px", marginBottom: "20px" }}>
                 <Card.Img
                   variant="top"
-                  src={`/product_images/${storageItem.Image}`}
+                  src={`${storageItem.Image_Url}`}
                   style={{ height: "200px", objectFit: "cover" }}
                   alt={storageItem.Name}
                 />

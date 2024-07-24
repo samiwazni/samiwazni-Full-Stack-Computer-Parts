@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Home = ({ currentUser }) => {
   return (
@@ -14,17 +14,17 @@ const Home = ({ currentUser }) => {
         three core components: data scraping, dynamic web design, and database
         integration.
       </p>
-	  {!currentUser && (
-	  	 <p>To use the <strong>Computer Builder</strong> please <Link to="/signin">sign in</Link></p>
-  		)}
-		<br></br>
-      <a
-        variant="contained"
-        aria-label="outlined primary button group"
-        
-      >
-	  
-        <button><Link to="components">Components</Link></button>
+      {!currentUser && (
+        <p>
+          To use the <strong>Computer Builder</strong> please{" "}
+          <Link to="/signin">sign in</Link>
+        </p>
+      )}
+      <br></br>
+      <a variant="contained" aria-label="outlined primary button group">
+        <button>
+          <Link to="components">Components</Link>
+        </button>
       </a>
     </div>
   );

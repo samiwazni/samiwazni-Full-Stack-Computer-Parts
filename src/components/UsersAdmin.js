@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Container, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+} from "react-bootstrap";
 
-const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChangeAdmin, onSubmit, handleSignupAdmin }) => {
+const UsersAdmin = ({
+  setCurrentUser,
+  currentUser,
+  users,
+  handleCredentialChangeAdmin,
+  onSubmit,
+  handleSignupAdmin,
+}) => {
   const [selectedUser, setSelectedUser] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isAdminChecked, setIsAdminChecked] = useState(0);
@@ -25,9 +38,9 @@ const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChange
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
-    setFormFields(prevFields => ({
+    setFormFields((prevFields) => ({
       ...prevFields,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
 
     if (event.target.id) {
@@ -38,7 +51,7 @@ const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChange
       if (userId > users[users.length - 1].ID) {
         userId = users[0].ID;
       }
-      const selectedUser = users.find(user => user.ID === userId);
+      const selectedUser = users.find((user) => user.ID === userId);
       setSelectedUser(selectedUser);
     }
 
@@ -64,10 +77,23 @@ const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChange
     const newAdmin = isAdminChecked;
     const newBanned = isBannedChecked;
 
-    if (selectedUser !== "New user" && !newName && !newEmail && !newPassword && !newProfileImage && newAdmin === initialAdmin && newBanned === initialBanned) {
+    if (
+      selectedUser !== "New user" &&
+      !newName &&
+      !newEmail &&
+      !newPassword &&
+      !newProfileImage &&
+      newAdmin === initialAdmin &&
+      newBanned === initialBanned
+    ) {
       alert("No changes detected!");
       return;
-    } else if (selectedUser === "New user" && !newName && !newEmail && !newPassword) {
+    } else if (
+      selectedUser === "New user" &&
+      !newName &&
+      !newEmail &&
+      !newPassword
+    ) {
       alert("All required fields must be filled!");
       return;
     }
@@ -78,7 +104,14 @@ const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChange
 
     if (selectedUser !== "New user") {
       try {
-        await handleCredentialChangeAdmin(event, newAdmin, initialAdmin, newBanned, initialBanned, formFields);
+        await handleCredentialChangeAdmin(
+          event,
+          newAdmin,
+          initialAdmin,
+          newBanned,
+          initialBanned,
+          formFields
+        );
       } catch (error) {
         console.error("Error updating credentials:", error);
         alert("Error updating credentials.");
@@ -99,33 +132,74 @@ const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChange
         <Container id="userform" className="mt-4">
           <Form onSubmit={handleSubmit} className="adminForm">
             <div className="d-flex justify-content-end">
-              <Button variant="secondary" onClick={closeForm}>x</Button>
+              <Button variant="secondary" onClick={closeForm}>
+                x
+              </Button>
             </div>
             <Form.Group controlId="id">
               <Form.Label>ID</Form.Label>
-              <Form.Control type="number" name="id" value={selectedUser.ID} onChange={handleInputChange} min={users[0].ID} max={users[users.length - 1].ID} />
+              <Form.Control
+                type="number"
+                name="id"
+                value={selectedUser.ID}
+                onChange={handleInputChange}
+                min={users[0].ID}
+                max={users[users.length - 1].ID}
+              />
             </Form.Group>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder={selectedUser.Name} name="name" onChange={handleInputChange} />
+              <Form.Control
+                type="text"
+                placeholder={selectedUser.Name}
+                name="name"
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder={selectedUser.Email} name="email" onChange={handleInputChange} />
+              <Form.Control
+                type="email"
+                placeholder={selectedUser.Email}
+                name="email"
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Enter new password" name="password" onChange={handleInputChange} />
+              <Form.Control
+                type="password"
+                placeholder="Enter new password"
+                name="password"
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="profile_image">
               <Form.Label>Profile Image</Form.Label>
-              <Form.Control type="file" name="profile_image" accept="image/png, image/jpeg, image/gif" onChange={handleInputChange} />
+              <Form.Control
+                type="file"
+                name="profile_image"
+                accept="image/png, image/jpeg, image/gif"
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="admin">
-              <Form.Check type="checkbox" name="admin" label="Admin" checked={isAdminChecked} onChange={handleInputChange} />
+              <Form.Check
+                type="checkbox"
+                name="admin"
+                label="Admin"
+                checked={isAdminChecked}
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="banned">
-              <Form.Check type="checkbox" name="banned" label="Banned" checked={isBannedChecked} onChange={handleInputChange} />
+              <Form.Check
+                type="checkbox"
+                name="banned"
+                label="Banned"
+                checked={isBannedChecked}
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Button variant="primary" type="submit" className="mt-3 w-100">
               Change credentials
@@ -138,33 +212,75 @@ const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChange
         <Container id="userform" className="mt-4">
           <Form onSubmit={handleSubmit} className="adminForm">
             <div className="d-flex justify-content-end">
-              <Button variant="secondary" onClick={closeForm}>x</Button>
+              <Button variant="secondary" onClick={closeForm}>
+                x
+              </Button>
             </div>
             <Form.Group controlId="id">
               <Form.Label>ID</Form.Label>
-              <Form.Control type="text" name="id" value={selectedUser} onChange={handleInputChange} disabled />
+              <Form.Control
+                type="text"
+                name="id"
+                value={selectedUser}
+                onChange={handleInputChange}
+                disabled
+              />
             </Form.Group>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="New user name" name="name" onChange={handleInputChange} />
+              <Form.Control
+                type="text"
+                placeholder="New user name"
+                name="name"
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="New user email" name="email" onChange={handleInputChange} />
+              <Form.Control
+                type="email"
+                placeholder="New user email"
+                name="email"
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Enter new password" name="password" onChange={handleInputChange} />
+              <Form.Control
+                type="password"
+                placeholder="Enter new password"
+                name="password"
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="profile_image">
               <Form.Label>Profile Image</Form.Label>
-              <Form.Control type="file" name="profile_image" accept="image/png, image/jpeg, image/gif" onChange={handleInputChange} disabled />
+              <Form.Control
+                type="file"
+                name="profile_image"
+                accept="image/png, image/jpeg, image/gif"
+                onChange={handleInputChange}
+                disabled
+              />
             </Form.Group>
             <Form.Group controlId="admin">
-              <Form.Check type="checkbox" name="admin" label="Admin" checked={isAdminChecked} onChange={handleInputChange} />
+              <Form.Check
+                type="checkbox"
+                name="admin"
+                label="Admin"
+                checked={isAdminChecked}
+                onChange={handleInputChange}
+              />
             </Form.Group>
             <Form.Group controlId="banned">
-              <Form.Check type="checkbox" name="banned" label="Banned" checked={0} onChange={handleInputChange} disabled />
+              <Form.Check
+                type="checkbox"
+                name="banned"
+                label="Banned"
+                checked={0}
+                onChange={handleInputChange}
+                disabled
+              />
             </Form.Group>
             <Button variant="primary" type="submit" className="mt-3 w-100">
               Add new user
@@ -186,10 +302,17 @@ const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChange
       <h2 className="mt-4">All users!</h2>
       <Row className="userChangeButtons mb-4">
         <Col>
-          <Button variant="success" onClick={() => handleSelectUser("New user")}>Add new user</Button>
+          <Button
+            variant="success"
+            onClick={() => handleSelectUser("New user")}
+          >
+            Add new user
+          </Button>
         </Col>
         <Col>
-          <Button variant="warning" onClick={() => handleSelectUser(users[0])}>Change user credentials</Button>
+          <Button variant="warning" onClick={() => handleSelectUser(users[0])}>
+            Change user credentials
+          </Button>
         </Col>
       </Row>
 
@@ -204,9 +327,17 @@ const UsersAdmin = ({ setCurrentUser, currentUser, users, handleCredentialChange
               <div>Email: {user.Email}</div>
               <div>Admin: {user.isAdmin ? "True" : "False"}</div>
               <div>Banned: {user.isBanned ? "True" : "False"}</div>
-              <div><img src={`/images/${user.Profile_image}`} alt={user.Profile_image} height="200" /></div>
+              <div>
+                <img
+                  src={`/images/${user.Profile_image}`}
+                  alt={user.Profile_image}
+                  height="200"
+                />
+              </div>
               <div className="mt-2">
-                <Button variant="info" onClick={() => handleSelectUser(user)}>Select user for modification</Button>
+                <Button variant="info" onClick={() => handleSelectUser(user)}>
+                  Select user for modification
+                </Button>
               </div>
             </div>
           </li>

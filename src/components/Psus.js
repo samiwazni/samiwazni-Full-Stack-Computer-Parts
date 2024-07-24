@@ -16,7 +16,10 @@ const RenderPsus = ({ psus }) => {
     <Container style={{ maxWidth: "1000px", margin: "0 auto" }}>
       <div className="wrapper">
         <h1 title="Warning">Computer PSUs</h1>
-        <p>This page showcases a comprehensive collection of PSU components. Feel free to scroll through and explore the available models.</p>
+        <p>
+          This page showcases a comprehensive collection of PSUs components. Feel
+          free to scroll through and explore the available models.
+        </p>
         <div className="scroll-downs">
           <div className="mousey">
             <div className="scroller"></div>
@@ -24,7 +27,14 @@ const RenderPsus = ({ psus }) => {
         </div>
       </div>
       {loading ? (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "400px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px",
+          }}
+        >
           <Spinner animation="border" />
         </div>
       ) : (
@@ -34,7 +44,7 @@ const RenderPsus = ({ psus }) => {
               <Card style={{ maxWidth: "345px", marginBottom: "20px" }}>
                 <Card.Img
                   variant="top"
-                  src={`/product_images/${psuItem.Image}`}
+                  src={`${psuItem.Image_Url}`}
                   style={{ height: "200px", objectFit: "cover" }}
                   alt={psuItem.Name}
                 />

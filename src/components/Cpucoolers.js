@@ -15,9 +15,11 @@ const RenderCpuCoolers = ({ cpuCoolers }) => {
   return (
     <Container style={{ maxWidth: "1000px", margin: "0 auto" }}>
       <div className="wrapper">
-        <h1 title="Warning">Computer CPU Coolers</h1>
+        <h1 title="Warning">Computer CPUs Coolers</h1>
         <p>
-          This page showcases a comprehensive collection of CPU coolers components. Feel free to scroll through and explore the available models.
+          This page showcases a comprehensive collection of CPU coolers
+          components. Feel free to scroll through and explore the available
+          models.
         </p>
         <div className="scroll-downs">
           <div className="mousey">
@@ -26,7 +28,14 @@ const RenderCpuCoolers = ({ cpuCoolers }) => {
         </div>
       </div>
       {loading ? (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "400px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px",
+          }}
+        >
           <Spinner animation="border" />
         </div>
       ) : (
@@ -36,7 +45,7 @@ const RenderCpuCoolers = ({ cpuCoolers }) => {
               <Card style={{ maxWidth: "345px", marginBottom: "20px" }}>
                 <Card.Img
                   variant="top"
-                  src={`/product_images/${cpuCoolerItem.Image}`}
+                  src={`${cpuCoolerItem.Image_Url}`}
                   style={{ height: "200px", objectFit: "cover" }}
                   alt={cpuCoolerItem.Name}
                 />

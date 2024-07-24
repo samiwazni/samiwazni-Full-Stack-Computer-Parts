@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Form, Button, Container, Navbar } from 'react-bootstrap';
+import { Form, Button, Container, Navbar } from "react-bootstrap";
 import "../style/style.scss";
 
 // Function for signing up, taking onSubmit as a prop
@@ -56,7 +56,11 @@ const Signup = ({ onSubmit, handleSignup }) => {
           Sign Up
         </Button>
         <br></br>
-        <p className="text-left mt-4 text-primary"><Navbar.Brand as={Link} to="/Signin">Already have an account?</Navbar.Brand></p>
+        <p className="text-left mt-4 text-primary">
+          <Navbar.Brand as={Link} to="/Signin">
+            Already have an account?
+          </Navbar.Brand>
+        </p>
       </Form>
     </Container>
   );
