@@ -359,93 +359,32 @@ span {
 	}
 }
 
-.Profile-bg {
-	height: 20vh;
-	background-color: #e99700d3;
-}
-
 .Profile-info {
-	box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(5, 100, 196, 0.15) 0px 0px 0px 1px;
-	background-color: #dcdcdc;
-	margin-top: -20px;
-	width: 800px;
-	margin: -50px auto 0 auto;
-	padding: 50px;
+	position: relative;
+	background-color: #fff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
-	text-align: left;
-
-	img {
-		background-size: cover;
-		width: auto;
-		height: 150px;
-		border-radius: 50%;
-		padding: 10px;
-		margin: -120px 0 40px 0;
-		background-color: #dea002;
-	}
-
-	span {
-		text-transform: lowercase;
-		color: #0e002e;
-		font-weight: 400;
-	}
-
-	button:not(.closeForm) {
-		background-color: #0e002e;
-		color: #ccc;
-		font-size: 16px;
-		padding: 15px;
-		cursor: pointer;
-		border: none;
-		border-radius: 5px;
-
-		&:hover {
-			background-color: #17004c;
-		}
-	}
-
-	.userForm {
-		background-color: #000d12d6;
-		position: absolute;
-		top: 25%;
-		bottom: 25%;
-		left: 60%;
-		display: block;
-		overflow: auto;
-		padding: 25px;
-
-		.closeForm {
-			background-color: #000412d6;
-			color: #fff;
-			display: inline;
-			position: absolute;
-			left: 90%;
-			width: 2.5em;
-			height: 2.5em;
-			border: none;
-			border-radius: 25%;
-			cursor: pointer;
-
-			&:hover {
-				background-color: red;
-			}
-		}
-
-		label {
-			color: white;
-		}
-
-		input {
-			background-color: #b3121200;
-			width: 100%;
-			border: none;
-			border-bottom: 1px solid #0e002e !important;
-			height: 35px;
-			color: #fff;
-		}
-	}
-}
-
+  }
+  
+  .profile-image {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+  }
+  
+  .userForm {
+	background-color: #f9f9f9;
+  }
+  
+  button.closeForm {
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+  }
+  
 .Form-Container {
 	display: flex;
 	width: 500px !important;

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
+import "../style/style.scss";
 
 const Profile = ({
   setCurrentUser,
@@ -16,75 +18,64 @@ const Profile = ({
     setCurrentOperation("");
   };
 
-  const handleModifyProfile = (user) => {
-    setCurrentOperation(user);
+  const handleModifyProfile = () => {
+    setCurrentOperation("edit");
   };
 
   const renderUserForm = () => {
     if (currentOperation === "edit") {
       // For modifying existing users
       return (
-        <div id="userform">
-          <form onSubmit={handleSubmit} className="userForm">
-            <div>
-              <button className="closeForm" onClick={() => closeForm()}>
-                x
-              </button>
-            </div>
-            <div>
-              <input type="name" placeholder="Enter new name" name="name" />
-            </div>
-            <br></br>
-            <div>
-              <input type="email" placeholder="Enter new email" name="email" />
-            </div>
-            <br></br>
-            <div>
-              <input
+        <div id="userform" className="mt-4">
+          <Form onSubmit={handleSubmit} className="userForm p-4 border rounded">
+            <Button variant="outline-danger" className="mb-3" onClick={closeForm}>
+              x
+            </Button>
+            <Form.Group className="mb-3" controlId="formName">
+              <Form.Label>New Name</Form.Label>
+              <Form.Control type="text" placeholder="Enter new name" name="name" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formEmail">
+              <Form.Label>New Email</Form.Label>
+              <Form.Control type="email" placeholder="Enter new email" name="email" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>New Password</Form.Label>
+              <Form.Control
                 type="password"
                 placeholder="Enter new password"
                 name="password"
               />
-            </div>
-            <br></br>
-            <div>
-              <label>New profile image</label>
-              <input
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formProfileImage">
+              <Form.Label>New Profile Image</Form.Label>
+              <Form.Control
                 type="file"
                 name="profile_image"
                 accept="image/png, image/jpeg, image/gif"
               />
-            </div>
-            <br></br>
-            <br></br>
-            <div>
-              <input
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formCurrentPassword">
+              <Form.Label>Current Password</Form.Label>
+              <Form.Control
                 type="password"
                 placeholder="Enter current password"
                 name="currentpassword"
                 required
               />
-            </div>
-            <br></br>
-            <div>
-              <button variant="contained" type="submit">
-                Change credentials
-              </button>
-            </div>
-          </form>
+            </Form.Group>
+            <Button variant="primary" type="submit" className="w-100">
+              Change Credentials
+            </Button>
+          </Form>
         </div>
       );
     } else {
       return (
-        <div className="userCredentialChange">
-          <div className="userChangePrompt">
-            <p>Change your credentials.</p>
-          </div>
-          <div>
-            <button onClick={() => handleModifyProfile("edit")}>
-              Edit your profile
-            </button>
-          </div>
+        <div className="userCredentialChange mt-4">
+          <Button onClick={handleModifyProfile} variant="secondary">
+            Edit Your Profile
+          </Button>
         </div>
       );
     }
@@ -96,7 +87,7 @@ const Profile = ({
     const newName = event.target.name.value;
     const newEmail = event.target.email.value;
     const newPassword = event.target.password.value;
-    const newProfileImage = event.target.profile_image.value;
+    const newProfileImage = event.target.profile_image.files[0];
 
     const currentPassword = event.target.currentpassword.value;
 
@@ -110,7 +101,7 @@ const Profile = ({
     if (
       newName === currentUser.Name ||
       newEmail === currentUser.Email ||
-      newProfileImage === currentUser.Profile_image
+      (newProfileImage && newProfileImage.name === currentUser.Profile_image)
     ) {
       alert("You cannot use the same credentials!");
       return;
@@ -118,6 +109,7 @@ const Profile = ({
 
     if (!currentPassword) {
       alert("You must enter your current password!");
+      return;
     }
 
     try {
@@ -130,29 +122,32 @@ const Profile = ({
   };
 
   return (
-    <div>
-      <div className="Profile-bg"></div>
-      <div className="Profile-info">
-        <img
-          src={`/images/${currentUser.Profile_image}`}
-          alt={currentUser.Profile_image}
-        />{" "}
-        <br></br>
-        <label for="username">
-          <b>
-            Name: <span>{currentUser.Name}</span>
-          </b>
-        </label>
-        <br></br>
-        <br></br>
-        <label for="useremail">
-          <b>
-            Email: <span>{currentUser.Email}</span>
-          </b>
-        </label>
-        {renderUserForm()}
-      </div>
-    </div>
+    <Container className="mt-5">
+      <Row>
+        <Col md={{ span: 8, offset: 2 }} className="text-center">
+          <div className="Profile-info p-4 border rounded">
+            <Row className="align-items-center">
+              <Col md={3}>
+                <Image
+                  src={`/images/${currentUser.Profile_image}`}
+                  alt={currentUser.Profile_image}
+                  roundedCircle
+                  className="profile-image mb-3"
+                />
+              </Col>
+              <Col md={9} className="text-left">
+                <h4 className="mb-1">{currentUser.Name}</h4>
+                <p className="text-muted mb-1">@{currentUser.Username}</p>
+                <Button onClick={handleModifyProfile} variant="outline-secondary" className="mt-2">
+                  Edit Profile
+                </Button>
+              </Col>
+            </Row>
+            {renderUserForm()}
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
