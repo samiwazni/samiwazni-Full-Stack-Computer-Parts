@@ -9,7 +9,6 @@ $align: center;
 }
 
 .Home-Container, .home-bg {
-	background-color: #000;
 	color: #fff;
 	padding: 2rem;
 
@@ -75,7 +74,32 @@ $align: center;
 	}
 }
 
+//coloring
+$backgroundFo: #000925;
+$color: #ccc;
+$align: center;
 
+.component-list {
+  max-height: 150px;
+  overflow-y: auto;
+}
+.arrow {
+  font-size: 14px;
+  margin-left: 5px;
+  text-align: center !important;
+}
+/* Rotate the down arrow when content is shown */
+.componentsh2[aria-expanded="true"] .arrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+}
+.MuiPaper-root {
+  height: 400px;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
 
 button {
 	cursor: pointer;

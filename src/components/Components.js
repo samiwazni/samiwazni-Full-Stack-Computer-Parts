@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
-import "../style/style.scss";
 import { ChevronUp, ChevronDown } from 'react-bootstrap-icons';
+import "../style/style.scss";
 
 const BasicRenderComponents = ({ cases, cpus, cpuCoolers, gpus, memories, motherboards, psus, storages }) => {
   const [modalShow, setModalShow] = useState({

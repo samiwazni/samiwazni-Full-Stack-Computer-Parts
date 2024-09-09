@@ -6,7 +6,7 @@ import Hero from "../assets/hero.png"
 
 const Home = ({ currentUser }) => {
   return (
-    <div className="home-bg">
+    <div className="d-flex align-items-center justify-content-center p-3" style={{ height: '90vh', color: 'white' }}>
       <Container className="text-container">
         <Row className="align-items-center">
           <Col md={6}>
