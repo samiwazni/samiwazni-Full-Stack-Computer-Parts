@@ -1,224 +1,70 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import "../style/style.scss";
+import { ChevronUp, ChevronDown } from 'react-bootstrap-icons';
 
-// Function for rendering all components in one page, takes all components as props from api
-const BasicRenderComponents = ({
-  cases,
-  cpus,
-  cpuCoolers,
-  gpus,
-  memories,
-  motherboards,
-  psus,
-  storages,
-}) => {
-  const [showCases, setShowCases] = useState(false);
-  const [showCpus, setShowCpus] = useState(false);
-  const [showCpuCoolers, setShowCpuCoolers] = useState(false);
-  const [showGpus, setShowGpus] = useState(false);
-  const [showMemories, setShowMemories] = useState(false);
-  const [showMotherboards, setShowMotherboards] = useState(false);
-  const [showPsus, setShowPsus] = useState(false);
-  const [showStorages, setShowStorages] = useState(false);
+const BasicRenderComponents = ({ cases, cpus, cpuCoolers, gpus, memories, motherboards, psus, storages }) => {
+  const [modalShow, setModalShow] = useState({
+    cases: false,
+    cpus: false,
+    cpuCoolers: false,
+    gpus: false,
+    memories: false,
+    motherboards: false,
+    psus: false,
+    storages: false
+  });
+
+  const toggleModal = (section) => {
+    setModalShow((prev) => ({ ...prev, [section]: !prev[section] }));
+  };
 
   return (
-    <Container style={{ maxWidth: "1000px", margin: "0 auto" }}>
-      <h1>All Components</h1>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
-      </p>
-      <Row className="justify-content-center">
-        <Col xs={12} sm={6} md={3}>
-          <h2 className="componentsh2" onClick={() => setShowCases(!showCases)}>
-            Cases
-            {showCases ? (
-              <span className="arrow">▲</span>
-            ) : (
-              <span className="arrow">▼</span>
-            )}
-          </h2>
-          {showCases && (
-            <div className="component-list">
-              <ul>
-                {cases.map((caseItem) => (
-                  <li key={caseItem.ID}>
-                    {caseItem.Manufacturer} - {caseItem.Name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Col>
-
-        <Col xs={12} sm={6} md={3}>
-          <h2 className="componentsh2" onClick={() => setShowCpus(!showCpus)}>
-            CPUs
-            {showCpus ? (
-              <span className="arrow">▲</span>
-            ) : (
-              <span className="arrow">▼</span>
-            )}
-          </h2>
-          {showCpus && (
-            <div className="component-list">
-              <ul>
-                {cpus.map((cpuItem) => (
-                  <li key={cpuItem.ID}>
-                    {cpuItem.Manufacturer} - {cpuItem.Name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Col>
-
-        <Col xs={12} sm={6} md={3}>
-          <h2
-            className="componentsh2"
-            onClick={() => setShowCpuCoolers(!showCpuCoolers)}
-          >
-            CPU Coolers
-            {showCpuCoolers ? (
-              <span className="arrow">▲</span>
-            ) : (
-              <span className="arrow">▼</span>
-            )}
-          </h2>
-          {showCpuCoolers && (
-            <div className="component-list">
-              <ul>
-                {cpuCoolers.map((cpuCoolerItem) => (
-                  <li key={cpuCoolerItem.ID}>
-                    {cpuCoolerItem.Manufacturer} - {cpuCoolerItem.Name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Col>
-
-        <Col xs={12} sm={6} md={3}>
-          <h2 className="componentsh2" onClick={() => setShowGpus(!showGpus)}>
-            GPUs
-            {showGpus ? (
-              <span className="arrow">▲</span>
-            ) : (
-              <span className="arrow">▼</span>
-            )}
-          </h2>
-          {showGpus && (
-            <div className="component-list">
-              <ul>
-                {gpus.map((gpuItem) => (
-                  <li key={gpuItem.ID}>
-                    {gpuItem.Manufacturer} - {gpuItem.Name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Col>
-
-        <Col xs={12} sm={6} md={3}>
-          <h2
-            className="componentsh2"
-            onClick={() => setShowMemories(!showMemories)}
-          >
-            Memories
-            {showMemories ? (
-              <span className="arrow">▲</span>
-            ) : (
-              <span className="arrow">▼</span>
-            )}
-          </h2>
-          {showMemories && (
-            <div className="component-list">
-              <ul>
-                {memories.map((memoryItem) => (
-                  <li key={memoryItem.ID}>
-                    {memoryItem.Manufacturer} - {memoryItem.Name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Col>
-
-        <Col xs={12} sm={6} md={3}>
-          <h2
-            className="componentsh2"
-            onClick={() => setShowMotherboards(!showMotherboards)}
-          >
-            Motherboards
-            {showMotherboards ? (
-              <span className="arrow">▲</span>
-            ) : (
-              <span className="arrow">▼</span>
-            )}
-          </h2>
-          {showMotherboards && (
-            <div className="component-list">
-              <ul>
-                {motherboards.map((motherboardItem) => (
-                  <li key={motherboardItem.ID}>
-                    {motherboardItem.Manufacturer} - {motherboardItem.Name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Col>
-
-        <Col xs={12} sm={6} md={3}>
-          <h2 className="componentsh2" onClick={() => setShowPsus(!showPsus)}>
-            PSUs
-            {showPsus ? (
-              <span className="arrow">▲</span>
-            ) : (
-              <span className="arrow">▼</span>
-            )}
-          </h2>
-          {showPsus && (
-            <div className="component-list">
-              <ul>
-                {psus.map((psuItem) => (
-                  <li key={psuItem.ID}>
-                    {psuItem.Manufacturer} - {psuItem.Name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Col>
-
-        <Col xs={12} sm={6} md={3}>
-          <h2
-            className="componentsh2"
-            onClick={() => setShowStorages(!showStorages)}
-          >
-            Storages
-            {showStorages ? (
-              <span className="arrow">▲</span>
-            ) : (
-              <span className="arrow">▼</span>
-            )}
-          </h2>
-          {showStorages && (
-            <div className="component-list">
-              <ul>
-                {storages.map((storageItem) => (
-                  <li key={storageItem.ID}>
-                    {storageItem.Manufacturer} - {storageItem.Name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Col>
-      </Row>
+    <Container className="d-flex align-items-center justify-content-center" style={{ height: '100vh', color: 'white' }}>
+      <div>
+        <h1 className="text-center">Explore Our Components</h1>
+        <p className="text-center mb-4">Explore a wide range of computer components to build or upgrade your computer. From cases to CPUs, find all you need in one place.</p>
+        <Row>
+          {Object.entries({ cases, cpus, cpuCoolers, gpus, memories, motherboards, psus, storages }).map(([key, items]) => (
+            <Col xs={12} sm={6} md={4} lg={3} className="mb-3" key={key}>
+              <Button
+                onClick={() => toggleModal(key)}
+                aria-controls={key}
+                aria-expanded={modalShow[key]}
+                className="w-100 text-left"
+                variant="outline-light"
+              >
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+                <span className="float-right">
+                  {modalShow[key] ? <ChevronUp /> : <ChevronDown />}
+                </span>
+              </Button>
+              <Modal
+                show={modalShow[key]}
+                onHide={() => toggleModal(key)}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Header className="bg-dark text-white" closeButton>
+                  <Modal.Title id="contained-modal-title-vcenter">
+                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="bg-dark text-white" style={{ maxHeight: '70vh', overflowY: 'auto' }}>
+                  <ul>
+                    {items.map((item) => (
+                      <li key={item.ID}>
+                        {item.Manufacturer} - {item.Name}
+                      </li>
+                    ))}
+                  </ul>
+                </Modal.Body>
+              </Modal>
+            </Col>
+          ))}
+        </Row>
+      </div>
     </Container>
   );
 };
