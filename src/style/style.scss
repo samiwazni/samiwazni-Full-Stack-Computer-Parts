@@ -8,13 +8,74 @@ $align: center;
 	margin: 0;
 }
 
-.Home-Container {
-	width: 50%;
-	margin: 0 auto;
-	padding: 50px;
-	text-align: left;
-	height: 100%;
+.Home-Container, .home-bg {
+	background-color: #000;
+	color: #fff;
+	padding: 2rem;
+
+	.bg-dark {
+		background-color: #333 !important;
+	}
+
+	.bg-secondary {
+		background-color: #444 !important;
+	}
+
+	h1 {
+		color: #e5e5e5;
+	}
+	ul {
+		color: #e5e5e5;
+		padding-left: 2rem !important;
+		font-size: 1rem !important;
+		li::before {
+			width: 0 !important;
+		}	
+	}
+	.btn-primary {
+		background-color: #007bff;
+		border: none;
+
+		&:hover {
+			background-color: #0056b3;
+		}
+	}
+
+	.card {
+		background-color: transparent;
+		border: none;
+
+		.card-body {
+			background-color: #333;
+			border-radius: 8px;
+		}
+
+		.card-title {
+			font-size: 1.25rem;
+		}
+	}
+
+	ul {
+		list-style-type: none;
+		padding-left: 0;
+
+		li {
+			padding-left: 1.5em;
+			text-indent: -1.5em;
+			margin-bottom: 0.5em;
+
+			&:before {
+				content: "•";
+				color: #007bff;
+				font-weight: bold;
+				display: inline-block;
+				width: 1.5em;
+			}
+		}
+	}
 }
+
+
 
 button {
 	cursor: pointer;
@@ -26,9 +87,15 @@ button {
 }
 
 @media screen and (max-width:600px) {
+	.home-bg {
+		padding: 1rem !important;
+	}
 	.Home-Container {
 		width: 85%;
 		padding: 10px 20px;
+	}
+	.image-container {
+		display: none;
 	}
 }
 
@@ -364,37 +431,39 @@ span {
 	background-color: #fff;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
-  }
-  
-  .profile-image {
+}
+
+.profile-image {
 	width: 100px;
 	height: 100px;
 	object-fit: cover;
-  }
-  
-  .userForm {
+}
+
+.userForm {
 	background-color: #f9f9f9;
-  }
-  
-  button.closeForm {
+}
+
+button.closeForm {
 	background: none;
 	border: none;
 	font-size: 1.5rem;
 	position: absolute;
 	top: 10px;
 	right: 10px;
-  }
-  
+}
+
 .Form-Container {
 	display: flex;
 	width: 500px !important;
 	height: 80vh;
 	margin: auto;
 	flex-direction: column;
-    justify-content: center;
+	justify-content: center;
+
 	form {
 		padding: 20px;
-		background-color: #f8f9fa;
+		background-color: #181818;
+		color: #fff;
 		border-radius: 8px;
 	}
 }

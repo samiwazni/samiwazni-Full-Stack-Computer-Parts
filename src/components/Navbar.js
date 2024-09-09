@@ -63,7 +63,7 @@ const NavBar = ({ setCurrentUser, currentUser, handleSignout }) => {
             {currentUser ? (
               <>
                 <Nav.Link as={Link} to="/" onClick={handleLogout}>
-                  Log Out
+                  Log out
                 </Nav.Link>
                 {currentUser.isAdmin && (
                   <NavDropdown title="Admin" id="admin-nav-dropdown">
