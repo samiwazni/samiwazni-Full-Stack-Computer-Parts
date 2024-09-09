@@ -80,6 +80,16 @@ $align: center;
 button {
 	cursor: pointer;
 }
+.navbar-toggler  {
+	height: 30px !important;
+    width: 30px !important;
+	padding-right: 30px !important;
+	.navbar-toggler-icon {
+		width: 1.0em !important;
+		background-position: unset !important;
+		padding: 10px;
+	}
+}
 
 .UserName {
 	text-align: left;

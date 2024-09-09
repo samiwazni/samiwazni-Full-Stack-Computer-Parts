@@ -20,7 +20,7 @@ const BasicRenderComponents = ({ cases, cpus, cpuCoolers, gpus, memories, mother
   };
 
   return (
-    <Container className="d-flex align-items-center justify-content-center" style={{ height: '100vh', color: 'white' }}>
+    <Container className="d-flex align-items-center justify-content-center" style={{ height: '90vh', color: 'white' }}>
       <div>
         <h1 className="text-center">Explore Our Components</h1>
         <p className="text-center mb-4">Explore a wide range of computer components to build or upgrade your computer. From cases to CPUs, find all you need in one place.</p>
@@ -46,7 +46,7 @@ const BasicRenderComponents = ({ cases, cpus, cpuCoolers, gpus, memories, mother
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
               >
-                <Modal.Header className="bg-dark text-white" closeButton>
+                <Modal.Header data-bs-theme="dark" className="bg-dark text-white" closeButton>
                   <Modal.Title id="contained-modal-title-vcenter">
                     {key.charAt(0).toUpperCase() + key.slice(1)}
                   </Modal.Title>
