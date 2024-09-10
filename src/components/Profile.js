@@ -30,7 +30,7 @@ const Profile = ({
           <Form onSubmit={handleSubmit} className="userForm p-4 border rounded">
             <Button variant="outline-danger" className="mb-3" onClick={closeForm}>
               x
-            </Button>
+            </Button> 
             <Form.Group className="mb-3" controlId="formName">
               <Form.Label>New Name</Form.Label>
               <Form.Control type="text" placeholder="Enter new name" name="name" />
