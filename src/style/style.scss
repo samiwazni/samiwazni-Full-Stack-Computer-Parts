@@ -8,7 +8,8 @@ $align: center;
 	margin: 0;
 }
 
-.Home-Container, .home-bg {
+.Home-Container,
+.home-bg {
 	color: #fff;
 	padding: 2rem;
 
@@ -23,14 +24,17 @@ $align: center;
 	h1 {
 		color: #e5e5e5;
 	}
+
 	ul {
 		color: #e5e5e5;
 		padding-left: 2rem !important;
 		font-size: 1rem !important;
+
 		li::before {
 			width: 0 !important;
-		}	
+		}
 	}
+
 	.btn-primary {
 		background-color: #007bff;
 		border: none;
@@ -80,34 +84,40 @@ $color: #ccc;
 $align: center;
 
 .component-list {
-  max-height: 150px;
-  overflow-y: auto;
+	max-height: 150px;
+	overflow-y: auto;
 }
+
 .arrow {
-  font-size: 14px;
-  margin-left: 5px;
-  text-align: center !important;
+	font-size: 14px;
+	margin-left: 5px;
+	text-align: center !important;
 }
+
 /* Rotate the down arrow when content is shown */
 .componentsh2[aria-expanded="true"] .arrow {
-  transform: rotate(180deg);
-  transition: transform 0.3s ease-in-out;
+	transform: rotate(180deg);
+	transition: transform 0.3s ease-in-out;
 }
+
 .MuiPaper-root {
-  height: 400px;
-  img {
-    width: 100%;
-    object-fit: cover;
-  }
+	height: 400px;
+
+	img {
+		width: 100%;
+		object-fit: cover;
+	}
 }
 
 button {
 	cursor: pointer;
 }
-.navbar-toggler  {
+
+.navbar-toggler {
 	height: 30px !important;
-    width: 30px !important;
+	width: 30px !important;
 	padding-right: 30px !important;
+
 	.navbar-toggler-icon {
 		width: 1.0em !important;
 		background-position: unset !important;
@@ -124,10 +134,12 @@ button {
 	.home-bg {
 		padding: 1rem !important;
 	}
+
 	.Home-Container {
 		width: 85%;
 		padding: 10px 20px;
 	}
+
 	.image-container {
 		display: none;
 	}
@@ -462,8 +474,7 @@ span {
 
 .Profile-info {
 	position: relative;
-	background-color: #fff;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 12px 4px rgba(141, 141, 141, 0.1);
 	border-radius: 10px;
 }
 
@@ -471,10 +482,6 @@ span {
 	width: 100px;
 	height: 100px;
 	object-fit: cover;
-}
-
-.userForm {
-	background-color: #f9f9f9;
 }
 
 button.closeForm {

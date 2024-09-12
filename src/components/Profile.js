@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
+import { Row, Col, Form, Button, Image } from "react-bootstrap";
+import ProfileImage from "../assets/default-profile-image.png"
 import "../style/style.scss";
 
 const Profile = ({
@@ -27,7 +28,7 @@ const Profile = ({
       // For modifying existing users
       return (
         <div id="userform" className="mt-4">
-          <Form onSubmit={handleSubmit} className="userForm p-4 border rounded">
+          <Form onSubmit={handleSubmit} className="p-4 border rounded">
             <Button variant="outline-danger" className="mb-3" onClick={closeForm}>
               x
             </Button> 
@@ -64,8 +65,8 @@ const Profile = ({
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="w-100">
-              Change Credentials
+            <Button variant="light" type="submit" className="w-100">
+              Update
             </Button>
           </Form>
         </div>
@@ -73,8 +74,8 @@ const Profile = ({
     } else {
       return (
         <div className="userCredentialChange mt-4">
-          <Button onClick={handleModifyProfile} variant="secondary">
-            Edit Your Profile
+          <Button onClick={handleModifyProfile} variant="light">
+            Edit your profile
           </Button>
         </div>
       );
@@ -122,32 +123,28 @@ const Profile = ({
   };
 
   return (
-    <Container className="mt-5">
+    <div className="p-3" style={{ height: '90vh', color: 'white' }}>
       <Row>
-        <Col md={{ span: 8, offset: 2 }} className="text-center">
+        <Col md={{ span: 8, offset: 2 }} className="text-left">
           <div className="Profile-info p-4 border rounded">
             <Row className="align-items-center">
               <Col md={3}>
                 <Image
-                  src={`/images/${currentUser.Profile_image}`}
-                  alt={currentUser.Profile_image}
+                  src={currentUser.Profile_image ? `/images/${currentUser.Profile_image}` : ProfileImage}
+                  alt={currentUser.Username}
                   roundedCircle
                   className="profile-image mb-3"
                 />
               </Col>
               <Col md={9} className="text-left">
                 <h4 className="mb-1">{currentUser.Name}</h4>
-                <p className="text-muted mb-1">@{currentUser.Username}</p>
-                <Button onClick={handleModifyProfile} variant="outline-secondary" className="mt-2">
-                  Edit Profile
-                </Button>
               </Col>
             </Row>
             {renderUserForm()}
           </div>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 
