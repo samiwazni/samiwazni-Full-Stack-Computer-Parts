@@ -41,7 +41,7 @@ const RenderCases = ({ cases }) => {
         <Row className="justify-content-center">
           {cases.map((caseItem) => (
             <Col xs={12} sm={6} md={3} key={caseItem.ID}>
-              <Card style={{ maxWidth: "345px", marginBottom: "20px" }}>
+              <Card style={{ maxWidth: "345px", marginBottom: "20px"  }}>
                 <Card.Img
                   variant="top"
                   src={`${caseItem.Image_Url}`}
