@@ -25,16 +25,13 @@ const Home = ({ currentUser }) => {
                 <li>SQLite for the database</li>
               </ul>
               {!currentUser && (
-                <p className="mt-4">
-                  To use the <strong>Computer Builder</strong>{" "}
-                  <Button variant="outline-info" size="sm">
-                    <Link to="/signin" className="text-info text-decoration-none">
+                  <Button variant="light" size="sm" className="mt-3">
+                    <Link to="/signin" className="text-dark text-decoration-none">
                       sign in
                     </Link>
                 </Button>
-                  
-                </p>
               )}
+              {' '}
               <Button variant="dark" size="sm" className="mt-3">
                 <Link to="/components" className="text-white text-decoration-none">
                   Components
