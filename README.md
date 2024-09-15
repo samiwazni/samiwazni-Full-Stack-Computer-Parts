@@ -47,7 +47,7 @@ npm run dev
 
 ### Accessing the API
 
-Access the RESTful API via:
+After running the server, access the RESTful API via:
 ```bash
 http://localhost:4000/api/{endpoint}
 ```
